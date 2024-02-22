@@ -1,0 +1,81 @@
+{
+  "name": "dummyshop",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "prefix": "dummyshop-workspace",
+  "sourceRoot": "apps/dummyshop/src",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:application",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/dummyshop",
+        "index": "apps/dummyshop/src/index.html",
+        "browser": "apps/dummyshop/src/main.ts",
+        "polyfills": ["zone.js"],
+        "tsConfig": "apps/dummyshop/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": [
+          "apps/dummyshop/src/favicon.ico",
+          "apps/dummyshop/src/assets"
+        ],
+        "styles": ["apps/dummyshop/src/styles.scss"],
+        "scripts": [],
+        "server": "apps/dummyshop/src/main.server.ts",
+        "prerender": true,
+        "ssr": {
+          "entry": "apps/dummyshop/server.ts"
+        }
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "optimization": false,
+          "extractLicenses": false,
+          "sourceMap": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "buildTarget": "dummyshop:build:production"
+        },
+        "development": {
+          "buildTarget": "dummyshop:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "buildTarget": "dummyshop:build"
+      }
+    },
+    "serve-static": {
+      "executor": "@nx/web:file-server",
+      "options": {
+        "buildTarget": "dummyshop:build",
+        "staticFilePath": "dist/apps/dummyshop/browser"
+      }
+    }
+  }
+}
