@@ -6,6 +6,7 @@ import { User } from '../auth/interfaces/user.interface';
 
 export interface ProductsState {
     products: Product[];
+    favorites: Product[];
     total: number | undefined;
     limit: number | undefined;
     skip: number | undefined;
@@ -15,6 +16,7 @@ export interface ProductsState {
 
 export const initialState: ProductsState = {
     products: [],
+    favorites: [],
     total: undefined,
     limit: undefined,
     skip: undefined,
@@ -42,20 +44,20 @@ export const initialState: ProductsState = {
           skip
         }),
       ),
-    //   on(
-    //     customersActions.select,
-    //     (state, { id }): CustomersState => ({
-    //       ...state,
-    //       selectedId: id,
-    //     }),
-    //   ),
-    //   on(
-    //     customersActions.unselect,
-    //     (state): CustomersState => ({
-    //       ...state,
-    //       selectedId: undefined,
-    //     }),
-    //   ),
+      on(
+        productsActions.selectFavorite,
+        (state, newFavoriteProduct): ProductsState => ({
+          ...state,
+          favorites: [...state.favorites, newFavoriteProduct]
+        }),
+      ),
+      on(
+        productsActions.unSelectFavorite,
+        (state, favoriteProductToBeRemoved): ProductsState => ({
+          ...state,
+          favorites: state.favorites.filter((product) => product.id !== favoriteProductToBeRemoved.id),
+        }),
+      ),
     ),
   });
   

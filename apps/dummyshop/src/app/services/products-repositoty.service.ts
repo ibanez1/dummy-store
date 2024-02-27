@@ -1,8 +1,9 @@
 import { inject, Injectable, Signal } from '@angular/core';
-import { productsActions } from '../store/dummyshop.actions';
+import { productsActions, userActions } from '../store/dummyshop.actions';
 import { Product } from '../store/product';
-import { fromProducts } from '../store/dummyshop.selectors';
+import { fromProducts, fromUser } from '../store/dummyshop.selectors';
 import { Store } from '@ngrx/store';
+import { User } from '../auth/interfaces/user.interface';
 
 @Injectable({ providedIn: 'root' })
 export class ProductsRepository {
@@ -11,6 +12,11 @@ export class ProductsRepository {
   get products(): Signal<Product[]> {
     return this.#store.selectSignal(fromProducts.selectProducts);
   }
+
+  get favoriteProducts(): Signal<Product[]> {
+    return this.#store.selectSignal(fromProducts.selectFavorites);
+  }
+
   get pagedProducts(): Signal<{
     products: (Product & { selected: boolean })[];
     total: number | undefined;
@@ -21,11 +27,28 @@ export class ProductsRepository {
   }> {
     return this.#store.selectSignal(fromProducts.selectPagedProducts);
   }
+
+  get user(): Signal<User | undefined> {
+    return this.#store.selectSignal(fromUser.selectUser);
+  }
+
+  loadUser(user: User): void {
+    this.#store.dispatch(userActions.loginSuccess(user));
+  }
+
   findById(id: number): Signal<Product | undefined> { 
     return this.#store.selectSignal(fromProducts.selectById(id));
   }
   load(): void {
     this.#store.dispatch(productsActions.load());
+  }
+
+  selectFavorite(product: Product): void {
+    this.#store.dispatch(productsActions.selectFavorite(product));
+  }
+
+  unSelectFavorite(product: Product): void {
+    this.#store.dispatch(productsActions.unSelectFavorite(product));
   }
 //   nextPage() {
 //     this.#store.dispatch(productsActions.nextPage());

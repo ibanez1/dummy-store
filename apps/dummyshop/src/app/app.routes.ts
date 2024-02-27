@@ -24,6 +24,13 @@ export const appRoutes: Route[] = [
             import('./views/login/login.component').then(m => m.LoginComponent)
     },
     {
+        path: 'favorites',
+        canMatch: [authGuard],
+        providers: [provideDummyShop()],
+        loadComponent: () => 
+            import('./views/favorites/favorites.component').then(m => m.FavoritesComponent)
+    },
+    {
         path: '**',
         redirectTo: '',
     },

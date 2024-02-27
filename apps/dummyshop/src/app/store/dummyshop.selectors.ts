@@ -1,8 +1,9 @@
 import { createSelector } from '@ngrx/store';
-import { productsFeature } from './dummyshop.reducer';
+import { productsFeature, userFeature } from './dummyshop.reducer';
 import { Product } from './product';
 
-const { selectProducts, selectSelectedId } = productsFeature;
+const { selectProducts, selectFavorites, selectSelectedId } = productsFeature;
+const { selectUser } = userFeature;
 
 const selectById = (id: number) =>
   createSelector(selectProducts, (state: Product[]): Product | undefined =>
@@ -40,8 +41,13 @@ const selectPagedProducts = createSelector(
   }),
 );
 
+export const fromUser = {
+  selectUser
+}
+
 export const fromProducts = {
   selectProducts,
+  selectFavorites,
   selectPagedProducts,
   selectById,
 //   selectHasPreviousPage,

@@ -1,0 +1,5 @@
+<dummyshop-workspace-navbar></dummyshop-workspace-navbar>
+<p>FAVORITES !!!</p>
+@for (product of favoriteProducts(); track product.id) {
+    <dummyshop-workspace-product-card [product]="product" [favoriteSlected]=true></dummyshop-workspace-product-card>
+}

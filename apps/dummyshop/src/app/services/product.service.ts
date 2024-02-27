@@ -25,8 +25,4 @@ export class ProductService {
     .set('Authorization', `Bearer ${token}`);
     return this.#http.get<ProductsResponse>(this.#url, { 'headers': headers }).pipe(map((data: ProductsResponse) => ({ ...data })));
   }
-
-  loadAsPromise() {
-    return lastValueFrom(this.load());
-  }
 }

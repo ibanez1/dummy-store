@@ -1,20 +1,20 @@
 import { ChangeDetectionStrategy, Component, OnInit, Signal, computed, inject } from '@angular/core';
-import { AsyncPipe, CommonModule, JsonPipe } from '@angular/common';
-import { Router } from '@angular/router';
-import { AuthService } from '../../auth/services/auth.service';
+import { CommonModule } from '@angular/common';
+import { Router, RouterModule } from '@angular/router';
 import { ProductsRepository } from '../../services/products-repositoty.service';
+import { ProductCardComponent } from '../../components/product-card/product-card.component';
+import { NavBarComponent } from '../../components/navbar/navbar.component';
 
 @Component({
   selector: 'dummyshop-workspace-home',
   standalone: true,
-  imports: [CommonModule, AsyncPipe, JsonPipe],
+  imports: [CommonModule, RouterModule, ProductCardComponent, NavBarComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 
 export class HomeComponent implements OnInit{
-  authService = inject(AuthService);
   router = inject(Router);
   #store: ProductsRepository = inject(ProductsRepository);
   viewModel: Signal<any> = computed(() => {
@@ -30,12 +30,5 @@ export class HomeComponent implements OnInit{
   });
   ngOnInit(): void{
     this.#store.load();
-    console.log("this.store.products:::::::::::", this.#store.products())
-  }
-
-  logOut() {
-    this.authService.logout();
-    // this.isAuthenticated = false;
-    this.router.navigate(['/login']);
   }
 }

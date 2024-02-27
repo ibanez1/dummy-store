@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../auth/services/auth.service';
 import { ActionsSubject, Store } from '@ngrx/store';
 import { userActions } from '../../store/dummyshop.actions';
-import { Subject, catchError, of, takeUntil, throwError } from 'rxjs';
+import { Subject, takeUntil } from 'rxjs';
 import { ofType } from '@ngrx/effects';
 
 @Component({
@@ -86,10 +86,6 @@ export class LoginComponent implements OnInit, OnDestroy{
       password,
     };
     this.isSubmitting = true;
-
-    console.log("login:::::::::::", loginInfo);
-    // this.#store.dispatch(userActions.login(loginInfo));
-
     this.authService.login(loginInfo).subscribe(
       (user) => {
         this.#store.dispatch(userActions.loginSuccess(user));
@@ -117,6 +113,7 @@ export class LoginComponent implements OnInit, OnDestroy{
   handleLoginError(error: any): void {
     this.isSubmitting = false;
     this.errorRequest = 'Invalid username or password';
+    alert(error.error.message);
     console.log('Error', error);
   }
 

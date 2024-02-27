@@ -1,16 +1,11 @@
 import { inject, Injectable } from '@angular/core';
-import { Actions, concatLatestFrom, createEffect, ofType } from '@ngrx/effects';
-import { catchError, filter, map, switchMap, tap } from 'rxjs/operators';
-import { productsActions, userActions } from './dummyshop.actions';
-// import { Store } from '@ngrx/store';
-// import { productsFeature } from '../store/dummyshop.reducer';
-// import { fromProducts } from '../store/dummyshop.selectors';
+import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { catchError, map, switchMap, tap } from 'rxjs/operators';
+import { productsActions } from './dummyshop.actions';
 import { ProductService } from '../services/product.service';
 import { Product } from './product';
-import { AuthService } from '../auth/services/auth.service';
-import { User } from '../auth/interfaces/user.interface';
 import { of } from 'rxjs';
-import { Login } from '../auth/interfaces/login.interface';
+import { Router } from '@angular/router';
 
 interface ProductsResponse {
   products: Product[], 
@@ -23,7 +18,7 @@ interface ProductsResponse {
 export class ProductsEffects {
   #actions$ = inject(Actions);
   #productsService = inject(ProductService);
-//   #store = inject(Store);
+  router = inject(Router);
   load$ = createEffect(() => {
     return this.#actions$.pipe(
       ofType(productsActions.load),
@@ -37,6 +32,13 @@ export class ProductsEffects {
         }),
       ),
       catchError(error => of(productsActions.loadFailure({ error })))
+    );
+  });
+
+  redirect$ = createEffect(() => {
+    return this.#actions$.pipe(
+      ofType(productsActions.loadFailure),
+      tap(() => this.router.navigate(['/login']))
     );
   });
 }

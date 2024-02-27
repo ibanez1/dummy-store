@@ -12,11 +12,13 @@ export const productsActions = createActionGroup({
       limit: number;
       skip: number;
     }>(),
-    'Load Failure' : props<{ error: string }>(),
+    loadFailure : props<{ error: string }>(),
     // 'Next Page': emptyProps(),
     // 'Previous Page': emptyProps(),
-    Select: props<{ id: number }>(),
-    Unselect: emptyProps(),
+    selectFavorite: props<Product>(),
+    unSelectFavorite: props<Product>(),
+    select: props<{ id: number }>(),
+    unselect: emptyProps(),
   },
 });
 

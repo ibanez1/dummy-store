@@ -1,0 +1,8 @@
+<button (click)="logOut()">LOGOUT</button>
+<a [routerLink]="['/home']">Home</a>
+<a [routerLink]="['/favorites']">Favorites</a>
+
+<p>{{this.store.user()?.firstName}}</p>
+<p>{{this.store.user()?.lastName}}</p>
+<p>{{this.store.user()?.email}}</p>
+<img [src]="this.store.user()?.image" width="100" height="100">
