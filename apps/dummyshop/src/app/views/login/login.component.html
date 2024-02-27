@@ -1,0 +1,27 @@
+<p>login works!</p>
+<div class="container">
+    <div class="row justify-content-center animate__animated animate__fadeIn">
+  
+      <div class="col-lg-4 col-md-6 col-sm-8 col container-login d-flex align-items-center flex-column">
+        <img src="assets/logo_white.png" alt="logo" class="mt-5" />
+  
+        <h1 class="text-center m-3 fs-3 fw-medium" style="color: #7CB342;">Log In</h1>
+        <form [formGroup]="formLogin" (ngSubmit)="login()">
+          <div class="mb-3 text-start">
+            <label class="form-label">Username</label>
+            <input class="form-control" id="username" placeholder="Enter the username" formControlName="username" />
+            <span *ngIf="isFieldInvalid('username')" class="form-text text-light">Username is required</span>
+          </div>
+          <div class="mb-3 text-start">
+            <label class="form-label">Password</label>
+            <input type="password" class="form-control" id="password" placeholder="Enter the password"
+              formControlName="password" />
+            <span *ngIf="isFieldInvalid('password')" class="form-text text-light">Password is required</span>
+          </div>
+          <div class="m-4">
+            <button type="submit" mat-raised-button class="w-100 button-custom">Login</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>

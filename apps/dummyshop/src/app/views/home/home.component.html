@@ -1,0 +1,14 @@
+<p>home works!</p>
+<button (click)="logOut()">LOGOUT</button>
+
+<h1>Products</h1>
+<h6> total: {{viewModel().total}} </h6>
+<h6> limit: {{viewModel().limit}} </h6>
+<h6> skip: {{viewModel().skip}} </h6>
+@for (product of viewModel().products; track product.id) {
+    <h3>{{ product.title }}</h3>
+    <p>{{ product.description }}</p>
+    <p>{{ product.price }}</p>
+    <p>{{ product.thumbnail }}</p>
+    <img [src]="product.thumbnail" alt="product.title">
+}
