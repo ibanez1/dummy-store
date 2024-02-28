@@ -20,7 +20,6 @@ export class AuthService {
 * @returns Un Observable que emite la respuesta de inicio de sesión.
 */
   login(loginInfo: Login): Observable<LoginReponse> {
-    console.log("AUTH SERVICE LOGIN:::", loginInfo);
     const loginUrl = `${BASE_URL}/auth/login`;
     return this.http
       .post<LoginReponse>(loginUrl, loginInfo)
