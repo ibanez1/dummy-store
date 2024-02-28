@@ -29,6 +29,15 @@ export class HomeComponent implements OnInit{
       // length: pagedCustomers.total,
     };
   });
+
+  previousPage() {
+    this.#store.load({ limit: 10, skip: this.viewModel().skip - 10 });
+  }
+
+  nextPage() {
+    this.#store.load({ limit: 10, skip: this.viewModel().skip + 10 });
+  }
+  
   ngOnInit(): void{
     this.#store.load();
   }

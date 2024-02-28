@@ -39,8 +39,8 @@ export class ProductsRepository {
   findById(id: number): Signal<Product | undefined> { 
     return this.#store.selectSignal(fromProducts.selectById(id));
   }
-  load(): void {
-    this.#store.dispatch(productsActions.load());
+  load(queryParams = {limit: 10, skip: 0}): void {
+    this.#store.dispatch(productsActions.load(queryParams));
   }
 
   selectFavorite(product: Product): void {

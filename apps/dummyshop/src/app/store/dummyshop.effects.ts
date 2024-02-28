@@ -22,7 +22,7 @@ export class ProductsEffects {
   load$ = createEffect(() => {
     return this.#actions$.pipe(
       ofType(productsActions.load),
-      switchMap(() => this.#productsService.load()),
+      switchMap((action) => this.#productsService.load({limit: action.limit, skip: action.skip })),
       map(( data: ProductsResponse ) =>
       productsActions.loadSuccess({
           products: data.products,

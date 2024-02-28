@@ -10,19 +10,25 @@ interface ProductsResponse {
   limit: number, 
   skip: number
 }
+
+interface QueryParams {
+  limit: number, 
+  skip: number
+}
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
   #http = inject(HttpClient);
-  #url = 'https://dummyjson.com/auth/products';
+  #baseUrl = 'https://dummyjson.com/auth/products';
 
-  load() {
+  load(queryParams: QueryParams) {
+    const url = this.#baseUrl + `?limit=${queryParams.limit}&skip=${queryParams.skip}`;
     const token = sessionStorage.getItem('token');
     const headers = new HttpHeaders()
     .set('content-type', 'application/json')
     .set('Access-Control-Allow-Origin', '*')
     .set('Authorization', `Bearer ${token}`);
-    return this.#http.get<ProductsResponse>(this.#url, { 'headers': headers }).pipe(map((data: ProductsResponse) => ({ ...data })));
+    return this.#http.get<ProductsResponse>(url, { 'headers': headers }).pipe(map((data: ProductsResponse) => ({ ...data })));
   }
 }

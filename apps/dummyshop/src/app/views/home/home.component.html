@@ -10,4 +10,14 @@
 
 }
 
+@if(viewModel().skip !== 0) {
+    <button (click)="previousPage()">Previous Page</button>
+}
+
+@if(viewModel().skip !== 90) {
+    <button (click)="nextPage()">Next Page</button>
+}
+
+<h6> page: {{(viewModel().skip / viewModel().limit) + 1 }} of {{viewModel().total / viewModel().limit}}</h6>
+
 <dummyshop-workspace-spinner></dummyshop-workspace-spinner>

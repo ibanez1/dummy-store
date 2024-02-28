@@ -5,7 +5,7 @@ import { Login } from '../auth/interfaces/login.interface';
 export const productsActions = createActionGroup({
   source: 'Products',
   events: {
-    load: emptyProps(),
+    load: props<{ limit: number, skip: number }>(),
     'Load Success': props<{
       products: Product[];
       total: number;
