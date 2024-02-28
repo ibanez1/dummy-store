@@ -20,7 +20,6 @@ export class NavBarComponent implements OnInit{
   user = this.store.user()
 
   ngOnInit(): void {
-    console.log("user:::::::::::", this.user)
     if(!this.user && sessionStorage.getItem('user')) {
       const userStr: string | null = sessionStorage.getItem('user');
       if(!Object.is(userStr, null)) {

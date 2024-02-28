@@ -22,8 +22,6 @@ export class ProductsRepository {
     total: number | undefined;
     limit: number | undefined;
     skip: number | undefined;
-    // total: number;
-    // page: number;
   }> {
     return this.#store.selectSignal(fromProducts.selectPagedProducts);
   }
@@ -39,7 +37,7 @@ export class ProductsRepository {
   findById(id: number): Signal<Product | undefined> { 
     return this.#store.selectSignal(fromProducts.selectById(id));
   }
-  load(queryParams = {limit: 10, skip: 0}): void {
+  load(queryParams = {limit: 5, skip: 0}): void {
     this.#store.dispatch(productsActions.load(queryParams));
   }
 
@@ -50,12 +48,6 @@ export class ProductsRepository {
   unSelectFavorite(product: Product): void {
     this.#store.dispatch(productsActions.unSelectFavorite(product));
   }
-//   nextPage() {
-//     this.#store.dispatch(productsActions.nextPage());
-//   }
-//   previousPage() {
-//     this.#store.dispatch(productsActions.previousPage());
-//   }
   select(id: number): void {
     this.#store.dispatch(productsActions.select({ id }));
   }

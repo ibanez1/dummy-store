@@ -1,4 +1,4 @@
-import { Component, PLATFORM_ID, inject } from '@angular/core';
+import { Component, OnDestroy, OnInit, PLATFORM_ID, inject } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { isPlatformBrowser } from '@angular/common';
 import { CommonModule } from '@angular/common';
@@ -16,7 +16,7 @@ import { userActions } from '../../store/dummyshop.actions';
   templateUrl: './landing.component.html',
   styleUrl: './landing.component.scss',
 })
-export class LandingComponent {
+export class LandingComponent implements OnInit, OnDestroy{
   static isBrowser = new BehaviorSubject<boolean>(false);
   authService = inject(AuthService);
   platformId = inject(PLATFORM_ID);
@@ -30,20 +30,16 @@ export class LandingComponent {
   }
 
   ngOnInit() {
-    
     LandingComponent.isBrowser.subscribe((isBrowser) => {
       if (isBrowser) {
         this.isBorwser = true;
-        console.log('I am a browser', this.isBorwser);
         if(this.authService.isAuthenticated()){
           this.isAuthenticated = true;
           const user = this.authService.getUserInfo();
           this.#store.dispatch(userActions.loginSuccess(user));
           this.router.navigate(['/home']);
-          console.log('I am authenticated');
         } else {
           this.isAuthenticated = false;
-          console.log('I am not authenticated');
           this.router.navigate(['/login']);
         }
       } else {

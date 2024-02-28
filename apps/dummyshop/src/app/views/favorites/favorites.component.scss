@@ -1,0 +1,21 @@
+.favorites{
+    font-family: Arial, Helvetica, sans-serif;
+    color: #5a01a7;
+    &__title{
+        margin-left: 300px;
+    }
+    &__container{
+        display: grid;
+        grid-template-columns: 1fr;
+        justify-items: center;
+        align-items: center;
+    }
+    &__card{
+        width: 800px;
+        height: 180px;
+        @media screen and (max-width: 800px) {
+            width: 300px;
+            height: 400px;
+          }
+    }
+}

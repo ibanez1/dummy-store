@@ -1,0 +1,82 @@
+.login{
+    background: linear-gradient(white, rgb(162, 0, 255));
+    &__container{
+        display: flex;
+        justify-content: center;
+        height: 100vh;
+        margin-top: 40px;
+    }
+}
+
+.login-form{
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 30px;
+    box-shadow: 0 0 10px 0 rgba(0,0,0,0.1);
+    background-color: #fff;
+    margin: 20px;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #5a01a7;
+    &__image{
+        height: 180px;
+        width: 300px;
+    }
+    &__title{
+        margin-bottom: 40px;
+        font-weight: bold;
+    }
+    &__field{
+        margin-bottom: 40px;
+        display: flex;
+        flex-direction: column;
+        font-weight: bold;
+        align-items: flex-start;
+        margin-left: 100px;
+        height: 78px;
+    }
+    &__label{
+        margin-bottom: 10px;
+    }
+    &__input{
+        margin-bottom: 10px;
+        width: 220px;
+        padding: 12px 20px;
+        margin: 6px 0;
+        box-sizing: border-box;
+        border-radius: 10px;
+        border: 2px solid #ccc;
+    }
+    &__message{
+       color: red;
+       font-size: 12px;
+    }
+    &__button{
+        margin-left: 40px;
+        background-color: #5a01a7;
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        border-radius: 30px;
+        &:hover{
+            transition: 0.7s;
+            background-color: rgb(162, 0, 255);
+            color: white;
+        }
+        &:active{
+            box-shadow: 0 2px rgb(162, 0, 255);
+            // transform: translateY(2px);
+        }
+        &:focus:not(:hover){
+            outline-color: #5a01a7;
+            outline-style:solid;
+        }
+     }
+}
+

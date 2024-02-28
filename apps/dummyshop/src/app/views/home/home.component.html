@@ -1,23 +1,24 @@
 
 <dummyshop-workspace-navbar></dummyshop-workspace-navbar>
-<p>home works!</p>
-<h1>Products</h1>
-<h6> total: {{viewModel().total}} </h6>
-<h6> limit: {{viewModel().limit}} </h6>
-<h6> skip: {{viewModel().skip}} </h6>
-@for (product of viewModel().products; track product.id) {
-    <dummyshop-workspace-product-card [product]="product"></dummyshop-workspace-product-card>
+<div class="home">
+    <h2 class="home home__title">Products</h2>
+        <div class="home home__container">
+            @for (product of viewModel().products; track product.id) {
+                <div class="home__card">
+                    <dummyshop-workspace-product-card [product]="product"></dummyshop-workspace-product-card>
+                </div>
+            }
 
-}
+            <div class="home__paginator">
+                @if(viewModel().skip !== 0) {
+                    <button class="home__paginatorbutton" (click)="previousPage()">Previous Page</button>
+                }
 
-@if(viewModel().skip !== 0) {
-    <button (click)="previousPage()">Previous Page</button>
-}
-
-@if(viewModel().skip !== (viewModel().total - viewModel().limit)) {
-    <button (click)="nextPage()">Next Page</button>
-}
-
-<h6> page: {{(viewModel().skip / viewModel().limit) + 1 }} of {{viewModel().total / viewModel().limit}}</h6>
-
+                @if(viewModel().skip !== (viewModel().total - viewModel().limit)) {
+                    <button class="home__paginatorbutton" (click)="nextPage()">Next Page</button>
+                }
+            </div>
+            <div class="home__paginatortext"> page: {{(viewModel().skip / viewModel().limit) + 1 }} of {{viewModel().total / viewModel().limit}}</div>
+        </div>
+</div>
 <dummyshop-workspace-spinner></dummyshop-workspace-spinner>

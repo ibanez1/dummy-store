@@ -29,11 +29,11 @@ export class HomeComponent implements OnInit{
   });
 
   previousPage() {
-    this.#store.load({ limit: 10, skip: this.viewModel().skip - 10 });
+    this.#store.load({ limit: this.viewModel().limit, skip: this.viewModel().skip - this.viewModel().limit });
   }
 
   nextPage() {
-    this.#store.load({ limit: 10, skip: this.viewModel().skip + 10 });
+    this.#store.load({ limit: this.viewModel().limit, skip: this.viewModel().skip + this.viewModel().limit });
   }
 
   ngOnInit(): void{

@@ -1,25 +1,23 @@
-<p>login works!</p>
-<div class="container">
-    <div class="row justify-content-center animate__animated animate__fadeIn">
+<div class="login login__container">
+    <div class="login-wrapper">
   
-      <div class="col-lg-4 col-md-6 col-sm-8 col container-login d-flex align-items-center flex-column">
-        <img src="assets/logo_white.png" alt="logo" class="mt-5" />
-  
-        <h1 class="text-center m-3 fs-3 fw-medium" style="color: #7CB342;">Log In</h1>
+      <div class="login-form">
+        <img src="../../../assets/images/dummy.jpg" alt="logo" class="login-form__image" />
+        <h3 class="login-form__title">An online shop</h3>
         <form [formGroup]="formLogin" (ngSubmit)="login()">
-          <div class="mb-3 text-start">
-            <label class="form-label">Username</label>
-            <input class="form-control" id="username" placeholder="Enter the username" formControlName="username" />
-            <span *ngIf="isFieldInvalid('username')" class="form-text text-light">Username is required</span>
+          <div class="login-form__field">
+            <label class="login-form__label">Username</label>
+            <input class="login-form__input" id="username" placeholder="Enter the username" formControlName="username" />
+            <span *ngIf="isFieldInvalid('username')" class="login-form__message">Username is required</span>
           </div>
-          <div class="mb-3 text-start">
-            <label class="form-label">Password</label>
-            <input type="password" class="form-control" id="password" placeholder="Enter the password"
+          <div class="login-form__field">
+            <label class="login-form__label">Password</label>
+            <input type="password" class="login-form__input" id="password" placeholder="Enter the password"
               formControlName="password" />
-            <span *ngIf="isFieldInvalid('password')" class="form-text text-light">Password is required</span>
+            <span *ngIf="isFieldInvalid('password')" class="login-form__message">Password is required</span>
           </div>
-          <div class="m-4">
-            <button type="submit" mat-raised-button class="w-100 button-custom">Login</button>
+          <div class="login-form__field">
+            <button type="submit" class="login-form__button">Login</button>
           </div>
         </form>
       </div>

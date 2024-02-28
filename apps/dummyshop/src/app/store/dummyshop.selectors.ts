@@ -10,20 +10,6 @@ const selectById = (id: number) =>
     state.find((p) => p.id === id),
   );
 
-// const selectSkip = createSelector(
-//   productsFeature.selectProductsState,
-//   (state) => state.page < state.total,
-// );
-// const selectLimit = createSelector(
-//   productsFeature.selectPage,
-//   (page) => page > 1,
-// );
-
-// const selectTotal= createSelector(
-//   productsFeature.selectPage,
-//   (page) => page > 1,
-// );
-
 const selectPagedProducts = createSelector(
   selectProducts,
   selectSelectedId,
@@ -50,6 +36,4 @@ export const fromProducts = {
   selectFavorites,
   selectPagedProducts,
   selectById,
-//   selectHasPreviousPage,
-//   selectHasNextPage,
 };

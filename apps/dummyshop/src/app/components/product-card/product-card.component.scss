@@ -1,0 +1,69 @@
+.card {
+    background-color: rgb(247, 244, 250);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    display: flex;
+    justify-content: space-between;
+    height: 120px;
+    border-radius: 20px;
+    width: 500px;
+    @media screen and (max-width: 800px) {
+        width: 300px;
+        height: 300px;
+        flex-direction: column;
+      }
+    &__titlegroup{
+        display: flex;
+        flex-direction: row;
+    }
+    &__container {
+        display: flex;
+        align-items: center;
+        padding: 20px;
+        margin-left: 80px;
+    }
+    &__image {
+        border-radius: 20px;
+    }
+    &__info {
+        width: 300px;
+        font-size: 12px;
+        &--big {
+            font-size: 20px;
+            font-weight: bold;
+        }
+    }
+
+}
+
+
+.like-btn {
+  display: inline-block;
+  Cursor: pointer;
+  width: 50px;
+  height: 20px;
+  border: none;
+  margin-top: 10px;
+}
+
+.like-btn {
+  background: url('https://i.ibb.co/vw78mf3/heart.png') no-repeat 0% 50%;
+  background-size: 2900%;
+}
+
+
+.like-active {
+  animation-name: animate;
+  animation-duration: .8s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+.like-active {
+  animation-timing-function: steps(28);
+}
+
+@keyframes animate {
+  0%   { background-position: left;  }
+  50%  { background-position: right; }
+  100% { background-position: right; }
+}

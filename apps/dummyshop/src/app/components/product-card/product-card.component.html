@@ -1,11 +1,12 @@
 
-    <h3>{{ product.title }}</h3>
-    <p>{{ product.description }}</p>
-    <p>{{ product.price }}</p>
-    <p>{{ product.thumbnail }}</p>
-    <img [src]="product.thumbnail" alt="product.title" width="200" height="200">
-    @if (favoriteSlected) {
-        <button (click)="removeFromFavorites(product)">Remove from favorites</button>
-    } @else {
-        <button (click)="addToFavorites(product)">Add to favorites</button>
-    }
+    <div class="card card__container">
+        <img class="card__image" [src]="product.thumbnail" alt="product.title" width="180" height="120">
+        <div class="card__info">
+            <div class="card__titlegroup">
+                <h3>{{ product.title }}</h3>
+                <button [ngClass]="{'like-btn': true, 'like-active': this.favoriteSelected()}" (click)="changeFavoriteState(product)"></button>
+            </div>
+            <p>{{ product.description }}</p>
+            <p class="card__info--big">{{ product.price | currency:'USD' }}</p>
+        </div>
+    </div>

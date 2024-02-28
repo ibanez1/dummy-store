@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit, computed, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { ProductsRepository } from '../../services/products-repositoty.service';
@@ -15,22 +15,22 @@ import { Product } from '../../store/product';
 
 export class ProductCardComponent implements OnInit {
   @Input() product: Product;
-  favoriteSlected = false;
+  favoriteSelected = signal(false);
   router = inject(Router);
   #store: ProductsRepository = inject(ProductsRepository);
 
   ngOnInit() {
-      this.favoriteSlected = this.#store.favoriteProducts().some((fav: Product) => fav.id === this.product.id);
+      const favoriteSlected = this.#store.favoriteProducts().some((fav: Product) => fav.id === this.product.id);
+      this.favoriteSelected.set(favoriteSlected);
   }
 
-  public addToFavorites(product: Product) {
-    this.favoriteSlected = !this.favoriteSlected;
-    this.#store.selectFavorite(product);
-  }
-
-  public removeFromFavorites(product: Product) {
-    this.favoriteSlected = !this.favoriteSlected;
-    this.#store.unSelectFavorite(product);
+  public changeFavoriteState(product: Product) {
+    if(this.favoriteSelected()){
+      this.#store.unSelectFavorite(product);
+    } else {
+      this.#store.selectFavorite(product);
+    }
+    this.favoriteSelected.update(() => !this.favoriteSelected());
   }
 
 }

@@ -1,8 +1,18 @@
-<button (click)="logOut()">LOGOUT</button>
-<a [routerLink]="['/home']">Home</a>
-<a [routerLink]="['/favorites']">Favorites</a>
+<div  class="navbar">
+    <div class="navbar__container">
+        <a class="navbar__link" [routerLink]="['/home']">Home</a>
+        <a class="navbar__link" [routerLink]="['/favorites']">Favorites</a>
+    </div>
 
-<p>{{this.store.user()?.firstName}}</p>
-<p>{{this.store.user()?.lastName}}</p>
-<p>{{this.store.user()?.email}}</p>
-<img [src]="this.store.user()?.image" width="100" height="100">
+    <div class="navbar__container--right">
+        <div class="navbar--inline">
+            <p class="navbar__element">{{this.store.user()?.firstName}}</p>
+            <p class="navbar__element">{{this.store.user()?.lastName}}</p>
+        </div>
+        <div class="navbar__element--small">
+            <p>{{this.store.user()?.email}}</p>
+        </div>
+        <img [src]="this.store.user()?.image" width="60" height="60">
+        <button class="navbar__button" (click)="logOut()">LOGOUT</button>
+    </div>
+</div>

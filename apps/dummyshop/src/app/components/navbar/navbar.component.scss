@@ -1,0 +1,86 @@
+.navbar {
+    background-color: rgb(247, 244, 250);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    display: flex;
+    justify-content: space-between;
+    &__info {
+        display: flex;
+        flex-direction: row;
+        margin-right: 40px;
+    }
+    &--inline {
+        display: flex;
+        flex-direction: row;
+        margin-right: 30px;
+    }
+    &__element {
+        margin-right: 10px;
+        font-weight: bold;
+        &--small{
+            font-size: 12px;
+            margin-right: 40px;
+        }
+    }
+    &__container {
+        display: flex;
+        align-items: center;
+        padding: 20px;
+        margin-left: 80px;
+
+        &--right {
+            display: flex;
+            align-items: center;
+            margin-right: 100px;
+            &__logo {
+                height: 50px;
+                width: 50px;
+            }
+            &__title {
+                font-size: 30px;
+                font-weight: bold;
+                margin-left: 20px;
+            }
+        }
+    }
+    &__link {
+        padding: 10px;
+        text-decoration: none;
+        color: #5a01a7;
+        font-weight: bold;
+        font-size: 20px;
+        &:hover{
+            transition: 0.7s;
+            color: rgb(162, 0, 255);
+        }
+    }
+    &__button {
+        margin-left: 80px;
+        background-color: #5a01a7;
+        border: none;
+        color: white;
+        padding: 12px 26px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 12px;
+        border-radius: 30px;
+
+        &:hover {
+            transition: 0.7s;
+            background-color: rgb(162, 0, 255);
+            color: white;
+        }
+
+        &:active {
+            background-color: #ac4caf;
+            box-shadow: 0 2px rgb(162, 0, 255);
+            // transform: translateY(2px);
+        }
+
+        &:focus:not(:hover) {
+            outline-color: #5a01a7;
+            outline-style: solid;
+        }
+    }
+}

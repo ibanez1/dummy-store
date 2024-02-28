@@ -1,0 +1,51 @@
+.home{
+    font-family: Arial, Helvetica, sans-serif;
+    color: #5a01a7;
+    &__title{
+        margin-left: 300px;
+    }
+    &__container{
+        display: grid;
+        grid-template-columns: 1fr;
+        justify-items: center;
+        align-items: center;
+    }
+    &__card{
+        width: 800px;
+        height: 180px;
+        @media screen and (max-width: 800px) {
+            width: 300px;
+            height: 400px;
+          }
+    }
+    &__paginatorbutton{
+        margin-left: 40px;
+        background-color: #5a01a7;
+        border: none;
+        color: white;
+        padding: 12px 26px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 12px;
+        border-radius: 30px;
+
+        &:hover {
+            transition: 0.7s;
+            background-color: rgb(162, 0, 255);
+            color: white;
+        }
+
+        &:active {
+            background-color: #ac4caf;
+            box-shadow: 0 2px rgb(162, 0, 255);
+            // transform: translateY(2px);
+        }
+    }
+    &__paginatortext{
+        font-size: 20px;
+        font-weight: bold;
+        margin-top: 30px;
+
+    }
+}

@@ -10,7 +10,6 @@ describe('HomeComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [FavoritesComponent, HttpClientModule],
-      // providers: [EndpointSimulationService]
     }).compileComponents();
 
     fixture = TestBed.createComponent(FavoritesComponent);
