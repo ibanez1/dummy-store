@@ -7,11 +7,12 @@ import { ActionsSubject, Store } from '@ngrx/store';
 import { userActions } from '../../store/dummyshop.actions';
 import { Subject, takeUntil } from 'rxjs';
 import { ofType } from '@ngrx/effects';
+import { SpinnerComponent } from '../../components/spinner/spinner.component';
 
 @Component({
   selector: 'dummyshop-workspace-login',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule ],
+  imports: [CommonModule, ReactiveFormsModule, SpinnerComponent],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
 })

@@ -4,11 +4,12 @@ import { Router, RouterModule } from '@angular/router';
 import { ProductsRepository } from '../../services/products-repositoty.service';
 import { ProductCardComponent } from '../../components/product-card/product-card.component';
 import { NavBarComponent } from '../../components/navbar/navbar.component';
+import { SpinnerComponent } from '../../components/spinner/spinner.component';
 
 @Component({
   selector: 'dummyshop-workspace-home',
   standalone: true,
-  imports: [CommonModule, RouterModule, ProductCardComponent, NavBarComponent],
+  imports: [CommonModule, RouterModule, ProductCardComponent, NavBarComponent, SpinnerComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
