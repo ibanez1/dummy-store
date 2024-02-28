@@ -5,11 +5,12 @@ import { ProductsRepository } from '../../services/products-repositoty.service';
 import { Product } from '../../store/product';
 import { ProductCardComponent } from '../../components/product-card/product-card.component';
 import { NavBarComponent } from '../../components/navbar/navbar.component';
+import { EmptyPageComponent } from '../../components/empty-page/empty-page.component';
 
 @Component({
   selector: 'dummyshop-workspace-favorites',
   standalone: true,
-  imports: [CommonModule, RouterModule, ProductCardComponent, NavBarComponent],
+  imports: [CommonModule, RouterModule, ProductCardComponent, NavBarComponent, EmptyPageComponent],
   templateUrl: './favorites.component.html',
   styleUrl: './favorites.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
