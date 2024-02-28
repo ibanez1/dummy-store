@@ -14,7 +14,7 @@
     <button (click)="previousPage()">Previous Page</button>
 }
 
-@if(viewModel().skip !== 90) {
+@if(viewModel().skip !== (viewModel().total - viewModel().limit)) {
     <button (click)="nextPage()">Next Page</button>
 }
 

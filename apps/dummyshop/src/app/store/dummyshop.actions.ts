@@ -13,8 +13,6 @@ export const productsActions = createActionGroup({
       skip: number;
     }>(),
     loadFailure : props<{ error: string }>(),
-    // 'Next Page': emptyProps(),
-    // 'Previous Page': emptyProps(),
     selectFavorite: props<Product>(),
     unSelectFavorite: props<Product>(),
     select: props<{ id: number }>(),

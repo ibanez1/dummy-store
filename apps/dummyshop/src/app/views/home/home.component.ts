@@ -25,8 +25,6 @@ export class HomeComponent implements OnInit{
       total: pagedProducts.total,
       limit: pagedProducts.limit,
       skip: pagedProducts.skip
-      // pageIndex: pagedCustomers.page - 1,
-      // length: pagedCustomers.total,
     };
   });
 
@@ -37,7 +35,7 @@ export class HomeComponent implements OnInit{
   nextPage() {
     this.#store.load({ limit: 10, skip: this.viewModel().skip + 10 });
   }
-  
+
   ngOnInit(): void{
     this.#store.load();
   }
