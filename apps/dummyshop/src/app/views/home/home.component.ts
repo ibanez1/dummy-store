@@ -17,9 +17,9 @@ import { SpinnerComponent } from '../../components/spinner/spinner.component';
 
 export class HomeComponent implements OnInit{
   router = inject(Router);
-  #store: ProductsRepository = inject(ProductsRepository);
+  store: ProductsRepository = inject(ProductsRepository);
   viewModel: Signal<any> = computed(() => {
-    const pagedProducts = this.#store.pagedProducts();
+    const pagedProducts = this.store.pagedProducts();
     return {
       products: pagedProducts.products,
       total: pagedProducts.total,
@@ -29,14 +29,14 @@ export class HomeComponent implements OnInit{
   });
 
   previousPage() {
-    this.#store.load({ limit: this.viewModel().limit, skip: this.viewModel().skip - this.viewModel().limit });
+    this.store.load({ limit: this.viewModel().limit, skip: this.viewModel().skip - this.viewModel().limit });
   }
 
   nextPage() {
-    this.#store.load({ limit: this.viewModel().limit, skip: this.viewModel().skip + this.viewModel().limit });
+    this.store.load({ limit: this.viewModel().limit, skip: this.viewModel().skip + this.viewModel().limit });
   }
 
   ngOnInit(): void{
-    this.#store.load();
+    this.store.load();
   }
 }

@@ -18,10 +18,10 @@ import { EmptyPageComponent } from '../../components/empty-page/empty-page.compo
 
 export class FavoritesComponent implements OnInit{
   router = inject(Router);
-  #store: ProductsRepository = inject(ProductsRepository);
+  store: ProductsRepository = inject(ProductsRepository);
   favoriteProducts: WritableSignal<Product[]> = signal([]);
     ngOnInit(): void{
-      const favorites: Product[] = this.#store.favoriteProducts();
+      const favorites: Product[] = this.store.favoriteProducts();
       this.favoriteProducts.set(favorites);
     }
 }

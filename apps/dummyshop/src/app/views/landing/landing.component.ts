@@ -22,7 +22,7 @@ export class LandingComponent implements OnInit, OnDestroy{
   platformId = inject(PLATFORM_ID);
   isBorwser = false;
   isAuthenticated = false;
-  #store = inject(Store);
+  store = inject(Store);
   router = inject(Router);
 
   constructor() {
@@ -36,7 +36,7 @@ export class LandingComponent implements OnInit, OnDestroy{
         if(this.authService.isAuthenticated()){
           this.isAuthenticated = true;
           const user = this.authService.getUserInfo();
-          this.#store.dispatch(userActions.loginSuccess(user));
+          this.store.dispatch(userActions.loginSuccess(user));
           this.router.navigate(['/home']);
         } else {
           this.isAuthenticated = false;
