@@ -1,3 +1,123 @@
+
+# Project Title
+
+DUMMY SHOP
+
+An Nx and Angular project 
+
+    username: kminchelle
+    pw: 0lelplR
+
+# Description
+
+Aa sign-in page to gain access to the list of products where only authorised user
+has access to this content.
+
+The product list page is the homepage and displays a list of
+products. Every product preview contains the thumbnail, the title, the description,
+and the price. Also, a button to toggle the product as favorite or not favorite.
+
+The favorite products page displays a list of favorite products for the current user. Every product preview contains the thumbnail, the title, the description, and the price of the product. Also, a button to toggle it as favorite (or not favorite).
+
+- Angular 17
+- Nx monorepo
+- SSR: Native Angular server side rendering for First Contentful Paint (FCP) 
+- Netlify deployment
+- Login /Logout
+- Pagination
+- Ngrx Store for managing app state
+- Use of signals for better performance
+- Standalone components
+- SCSS for styles
+- Rxjs
+- On-Push strategy
+- Centralized service for app requests
+- Unit testing with Jest
+- Guard routes for unauthorixed users
+
+    
+
+
+## Demo
+
+https://dummyshopping.netlify.app
+
+
+## Tech Stack
+
+**Client:** Angular 17, Nx, SCSS, NGRX, Rxjs
+
+**Server:** https://dummyjson.com
+
+
+## Authors
+
+- [@ibanez1](https://github.com/ibanez1)
+
+
+## API Reference
+https://dummyjson.com
+
+#### Login Access
+
+```http
+  POST /auth/login
+```
+
+fetch('https://dummyjson.com/auth/login', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    
+    username: 'kminchelle',
+    password: '0lelplR',
+    // expiresInMins: 60, // optional
+  })
+})
+.then(res => res.json())
+.then(console.log);
+
+#### Get all products
+
+```http
+  GET /auth/products
+```
+
+| header    | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `token  ` | `string` | **Required**. Your token   |
+
+Limit and skip products:
+
+ex: 'https://dummyjson.com/products?limit=10&skip=10&select=title,price'
+
+#### More endpoints
+
+Add Product → https://dummyjson.com/auth/products/add
+● Update Product → https://dummyjson.com/auth/products/{id}
+● Delete Product → https://dummyjson.com/auth/products/{id}
+
+## Running Tests
+
+To run tests, run the following command
+
+```bash
+  npx nx run dummyshop:test
+```
+
+
+## Screenshots
+
+![App Login](https://ibb.co/tK4wH4t)
+
+![App Porducts](https://ibb.co/cxm6LYn)
+
+![App Porducts](https://ibb.co/6JSxHbR)
+
+
+
+## Nx
+
 # DummyshopWorkspace
 
 <a alt="Nx logo" href="https://nx.dev" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="45"></a>
@@ -59,11 +179,3 @@ Nx comes with local caching already built-in (check your `nx.json`). On CI you m
 ## Explore the Project Graph
 Run `nx graph` to show the graph of the workspace.
 It will show tasks that you can run with Nx.
-
-- [Learn more about Exploring the Project Graph](https://nx.dev/core-features/explore-graph)
-
-## Connect with us!
-
-- [Join the community](https://nx.dev/community)
-- [Subscribe to the Nx Youtube Channel](https://www.youtube.com/@nxdevtools)
-- [Follow us on Twitter](https://twitter.com/nxdevtools)
